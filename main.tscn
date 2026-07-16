@@ -1,17 +1,67 @@
 [gd_scene format=3 uid="uid://rruo42k1kyqk"]
 
-[ext_resource type="Script" uid="uid://dge33eop0nvy3" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://ctfwwsw3uisos" path="res://addons/sv_about_menu/ui/ui_controller.gd" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://n7jauopw8y1o" path="res://addons/sv_about_menu/data/sv_about_section.gd" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://buglxgortae4s" path="res://addons/sv_about_menu/data/sv_about_game_info.gd" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://boomnqmjwlnh0" path="res://addons/sv_about_menu/data/sv_about_entry.gd" id="5_272bh"]
+[ext_resource type="Script" uid="uid://bgpc0iy24r0jj" path="res://addons/sv_about_menu/ui/buttons_selector.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://bjgnxatvg3ldr" path="res://addons/sv_about_menu/data/sv_about_entry_custom.gd" id="6_272bh"]
+
+[sub_resource type="Resource" id="Resource_kek77"]
+script = ExtResource("6_272bh")
+title = "About"
+description = "SV About Menu Example Game
+
+Copyright © 2026 SpeedyVelcro
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_272bh"]
+script = ExtResource("6_272bh")
+title = "Credits"
+description = "SV About Menu Example Game
+
+[b]Lead Developer[/b]
+SpeedyVelcro
+
+[b]Lead Artist[/b]
+SpeedyVelcro
+
+[b]Special Thanks[/b]
+John Doe
+Jane Doe
+Jill Doe
+Jack Doe
+Joe Doe
+James Doe
+Jason Doe
+Jess Doe
+Jean Doe
+Jack Doe
+Jennifer Doe
+
+[b]In loving memory of John and Jane Doe[/b]
+
+[i]Any similarity to any persons, living or dead, is entirely coincidental.[/i]
+
+[i]This product may contain substances which are known to the State of California to cause cancer.[/i]
+
+[i]This credits section may contain statements of a fanciful nature, and should not be taken seriously.[/i]
+
+Thanks for playing!"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("4_7mycd")
+top_level_entries = Array[ExtResource("5_272bh")]([SubResource("Resource_kek77"), SubResource("Resource_272bh")])
 metadata/_custom_type_script = "uid://buglxgortae4s"
 
 [node name="Main" type="Node" unique_id=1341275760]
-script = ExtResource("1_ig7tw")
 
 [node name="SVAboutMenuUIController" type="Node" parent="." unique_id=1134418158]
 script = ExtResource("2_0xm2m")
@@ -25,3 +75,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1075307376]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=28319719]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=79143893]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+horizontal_scroll_mode = 0
+
+[node name="SVAboutButtonsSelector" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/ScrollContainer" unique_id=998097482 node_paths=PackedStringArray("ui_controller")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("6_7mycd")
+ui_controller = NodePath("../../../../../SVAboutMenuUIController")
+metadata/_custom_type_script = "uid://bgpc0iy24r0jj"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=1119777079]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="Control/MarginContainer/HBoxContainer/ScrollContainer2" unique_id=1043704038]
+layout_mode = 2

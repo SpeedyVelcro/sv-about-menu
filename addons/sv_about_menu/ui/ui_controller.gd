@@ -1,4 +1,4 @@
-class_name SVAboutMenuUIController
+class_name SVAboutUIController
 extends Node
 ## UI Controller for SV About Menu
 ##
