@@ -63,7 +63,7 @@ func get_sections() -> Dictionary[String, SVAboutEntries]:
 					entry.description += "Licenses: " + part["license"] + "\n\n"
 					for license in license_info.keys():
 						if part["license"].contains(license):
-							entry.description += license + "license:\n" + license_info[license] + "\n\n"
+							entry.description += license + " license:\n" + license_info[license] + "\n\n"
 			entries_wrapper.entries.append(entry)
 		sections[godot_copyright_info_section_title] = entries_wrapper
 	

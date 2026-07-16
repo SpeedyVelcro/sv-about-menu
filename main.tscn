@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://boomnqmjwlnh0" path="res://addons/sv_about_menu/data/sv_about_entry.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://bgpc0iy24r0jj" path="res://addons/sv_about_menu/ui/buttons_selector.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://bjgnxatvg3ldr" path="res://addons/sv_about_menu/data/sv_about_entry_custom.gd" id="6_272bh"]
+[ext_resource type="Script" uid="uid://bg46ajnerbf57" path="res://addons/sv_about_menu/ui/selected_description_label.gd" id="7_272bh"]
 
 [sub_resource type="Resource" id="Resource_kek77"]
 script = ExtResource("6_272bh")
@@ -90,6 +91,7 @@ theme_override_constants/margin_bottom = 64
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=28319719]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=79143893]
 custom_minimum_size = Vector2(64, 0)
@@ -105,10 +107,10 @@ script = ExtResource("6_7mycd")
 ui_controller = NodePath("../../../../../SVAboutMenuUIController")
 metadata/_custom_type_script = "uid://bgpc0iy24r0jj"
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=1119777079]
-custom_minimum_size = Vector2(64, 0)
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/HBoxContainer" unique_id=1044347885 node_paths=PackedStringArray("ui_controller")]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Control" type="Control" parent="Control/MarginContainer/HBoxContainer/ScrollContainer2" unique_id=1043704038]
-layout_mode = 2
+bbcode_enabled = true
+script = ExtResource("7_272bh")
+ui_controller = NodePath("../../../../SVAboutMenuUIController")
+metadata/_custom_type_script = "uid://bg46ajnerbf57"
