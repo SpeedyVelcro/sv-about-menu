@@ -45,11 +45,24 @@ func get_sections() -> Dictionary[String, SVAboutEntries]:
 			# TODO: A bespoke entry class for this would be cleaner.
 			var entry := SVAboutEntryCustom.new()
 			entry.title = component.name
-			entry.description = component.name + "\n"
+			entry.description = component.name + "\n\n"
+			
+			# Specifying file paths is not necessary here as this is
+			# aimed at players of the compiled game binary, not Godot developers.
+			# therefore we can omit the info in part["files"].
+			var display_files := false
+			if component.parts.size() > 1:
+				# HOWEVER, if there are multiple copyright notices, we do need those
+				# in order to distinguish the copyright notices.
+				display_files = true
 			for part in component.parts:
-				# Specifying file paths is not necessary here as this is
-				# aimed at players of the compiled game binary, not Godot developers.
-				# therefore we can omit the info in part["files"].
+				if display_files and part["files"].size() == 1:
+					entry.description += "Files: " + part["files"][0] + "\n"
+				if display_files and part["files"].size() > 1:
+					entry.description += "Files:\n"
+					for line in part["files"]:
+						entry.description += line + "\n"
+					entry.description += "\n"
 				for copyright in part["copyright"]:
 					entry.description += "Copyright © " + copyright + "\n"
 				if part["copyright"].size() > 0:
