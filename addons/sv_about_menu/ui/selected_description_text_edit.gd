@@ -1,9 +1,12 @@
-class_name SVAboutSelectedDescriptionLabel
-extends RichTextLabel
-## Description [Label] for SV About Menu.
+class_name SVAboutSelectedDescriptionTextEdit
+extends TextEdit
+## Description [TextEdit] for SV About Menu.
 ##
 ## Displays the description of the currently selected entry. You must set
 ## a [member ui_controller].
+##
+## This isn't very useful if you use BBCode. Use a [SVAboutSelectedDescriptionLabel]
+## instead, and turn on [member RichTextLabel.selection_enabled].
 
 ## Place a [SVAboutUIController] node in your scene and set it here. This is
 ## required for sharing state between nodes.
@@ -39,7 +42,7 @@ func _update_text() -> void:
 		return
 	
 	text = selection.get_description()
-	scroll_to_line(0)
+	scroll_vertical = 0
 
 
 # Signal connection
