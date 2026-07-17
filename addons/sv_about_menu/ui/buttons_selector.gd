@@ -14,6 +14,30 @@ extends VBoxContainer
 	get:
 		return ui_controller
 
+## [LabelSettings] to apply to all section title labels.
+@export var section_title_label_settings: LabelSettings:
+	set(value):
+		section_title_label_settings = value
+		for label in _section_labels:
+			label.label_settings = value
+	get:
+		return section_title_label_settings
+
+## Horizontal alignment of section title labels.
+@export var section_title_horizontal_alignment: HorizontalAlignment = HORIZONTAL_ALIGNMENT_LEFT:
+	set(value):
+		section_title_horizontal_alignment = value
+		for label in _section_labels:
+			label.horizontal_alignment = value
+	get:
+		return section_title_horizontal_alignment
+
+@export var button_text_alignment: HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER:
+	set(value):
+		button_text_alignment = value
+		for button in _buttons:
+			button.alignment = value
+
 var _section_labels: Array[Label] = []
 var _buttons: Array[Button] = []
 var _readied := false
@@ -48,7 +72,10 @@ func _regenerate_children() -> void:
 		add_child(button)
 		_buttons.append(button)
 		
+		button.clip_text = true
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		button.text = entry.get_title()
+		button.alignment = button_text_alignment
 		
 		button.pressed.connect(_on_top_level_button_pressed.bindv([i]))
 	
@@ -60,6 +87,8 @@ func _regenerate_children() -> void:
 		_section_labels.append(label)
 		
 		label.text = section
+		label.label_settings = section_title_label_settings
+		label.horizontal_alignment = section_title_horizontal_alignment
 		
 		var entries := sections[section].entries
 		
@@ -73,6 +102,7 @@ func _regenerate_children() -> void:
 			button.clip_text = true
 			button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			button.text = entry.get_title()
+			button.alignment = button_text_alignment
 			
 			button.pressed.connect(_on_section_button_pressed.bindv([section, i]))
 
