@@ -8,6 +8,14 @@ extends SVAboutEntry
 ## [member SVAboutGameInfo.include_godot_copyright_info].
 
 
+## Puts the name of the engine ("Godot Engine") at the beginning of the
+## description, before the copyright notice. 
+##
+## Useful for making it clear what the license is for, in-case the way you
+## arranged your UI elements doesn't.
+@export var prepend_engine_name_to_description := false
+
+
 # Override
 func get_title() -> String:
 	return "Godot Engine"
@@ -15,4 +23,7 @@ func get_title() -> String:
 
 # Override
 func get_description() -> String:
-	return Engine.get_license_text()
+	if not prepend_engine_name_to_description:
+		return Engine.get_license_text()
+	
+	return "Godot Engine\n\n" + Engine.get_license_text()

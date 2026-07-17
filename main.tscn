@@ -14,6 +14,7 @@
 
 [sub_resource type="Resource" id="Resource_dg77c"]
 script = ExtResource("5_efxa6")
+prepend_engine_name_to_description = true
 metadata/_custom_type_script = "uid://dnv52qhamxm66"
 
 [sub_resource type="Resource" id="Resource_ycdy4"]
@@ -36,7 +37,9 @@ metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 [sub_resource type="Resource" id="Resource_272bh"]
 script = ExtResource("6_272bh")
 title = "Credits"
-description = "[b]Lead Developer[/b]
+description = "SV About Engine Example Game
+
+[b]Lead Developer[/b]
 SpeedyVelcro
 
 [b]Lead Artist[/b]
@@ -72,6 +75,7 @@ top_level_entries = Array[ExtResource("5_272bh")]([SubResource("Resource_kek77")
 custom_sections = Dictionary[String, ExtResource("3_lquwl")]({
 "Third-Party Licenses": SubResource("Resource_ycdy4")
 })
+godot_copyright_info_entries_start_with_name = true
 godot_copyright_info_excludes = Array[String](["Godot Engine"])
 metadata/_custom_type_script = "uid://buglxgortae4s"
 
