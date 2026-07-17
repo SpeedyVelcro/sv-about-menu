@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bgpc0iy24r0jj" path="res://addons/sv_about_menu/ui/buttons_selector.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://bjgnxatvg3ldr" path="res://addons/sv_about_menu/data/sv_about_entry_custom.gd" id="6_272bh"]
 [ext_resource type="Script" uid="uid://bg46ajnerbf57" path="res://addons/sv_about_menu/ui/selected_description_label.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://b37gjky5xxyvp" path="res://addons/sv_about_menu/ui/selected_title_label.gd" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://c67g4lutw7vcw" path="res://addons/sv_about_menu/ui/selected_description_text_edit.gd" id="9_4c57u"]
 
 [sub_resource type="Resource" id="Resource_kek77"]
@@ -64,6 +65,9 @@ script = ExtResource("4_7mycd")
 top_level_entries = Array[ExtResource("5_272bh")]([SubResource("Resource_kek77"), SubResource("Resource_272bh")])
 metadata/_custom_type_script = "uid://buglxgortae4s"
 
+[sub_resource type="LabelSettings" id="LabelSettings_4c57u"]
+font_size = 20
+
 [node name="Main" type="Node" unique_id=1341275760]
 script = ExtResource("1_kek77")
 
@@ -107,6 +111,15 @@ text = "Show Label"
 layout_mode = 2
 text = "Show TextEdit"
 
+[node name="ShowTitleButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1748323939]
+layout_mode = 2
+text = "Show Title"
+
+[node name="HideTitleButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1483068639]
+visible = false
+layout_mode = 2
+text = "Hide Title"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer" unique_id=28319719]
 layout_mode = 2
 size_flags_vertical = 3
@@ -126,26 +139,42 @@ script = ExtResource("6_7mycd")
 ui_controller = NodePath("../../../../../../SVAboutMenuUIController")
 metadata/_custom_type_script = "uid://bgpc0iy24r0jj"
 
-[node name="SVAboutSelectedDescriptionLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1044347885 node_paths=PackedStringArray("ui_controller")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=976285365]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="SVAboutSelectedTitleLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1043470713 node_paths=PackedStringArray("ui_controller")]
+visible = false
+layout_mode = 2
+label_settings = SubResource("LabelSettings_4c57u")
+script = ExtResource("8_4c57u")
+ui_controller = NodePath("../../../../../../SVAboutMenuUIController")
+metadata/_custom_type_script = "uid://b37gjky5xxyvp"
+
+[node name="SVAboutSelectedDescriptionLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1044347885 node_paths=PackedStringArray("ui_controller")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 focus_mode = 2
 bbcode_enabled = true
 context_menu_enabled = true
 selection_enabled = true
 script = ExtResource("7_272bh")
-ui_controller = NodePath("../../../../../SVAboutMenuUIController")
+ui_controller = NodePath("../../../../../../SVAboutMenuUIController")
 metadata/_custom_type_script = "uid://bg46ajnerbf57"
 
-[node name="SVAboutSelectedDescriptionTextEdit" type="TextEdit" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1538948605 node_paths=PackedStringArray("ui_controller")]
+[node name="SVAboutSelectedDescriptionTextEdit" type="TextEdit" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1538948605 node_paths=PackedStringArray("ui_controller")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 editable = false
 wrap_mode = 1
 script = ExtResource("9_4c57u")
-ui_controller = NodePath("../../../../../SVAboutMenuUIController")
+ui_controller = NodePath("../../../../../../SVAboutMenuUIController")
 metadata/_custom_type_script = "uid://c67g4lutw7vcw"
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/ShowLabelButton" to="." method="_on_show_label_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/ShowTextEditButton" to="." method="_on_show_text_edit_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/ShowTitleButton" to="." method="_on_show_title_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/HideTitleButton" to="." method="_on_hide_title_button_pressed"]
