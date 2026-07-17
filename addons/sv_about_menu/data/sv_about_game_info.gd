@@ -31,6 +31,15 @@ extends Resource
 ## is [code]true[/code].
 @export var godot_copyright_info_section_title := "Godot Engine"
 
+## If [member include_godot_copyright_info] is [code]true[/code], then you can
+## put component titles into this array to exclude them from the auto-generated
+## section. Strings are case-sensitive and must match exactly.
+##
+## One use for this would be to remove the [code]"Godot Engine"[/code] component
+## from the auto-generated section so you can instead put the Godot Engine
+## license in a section for components used directly by your game.
+@export var godot_copyright_info_excludes: Array[String] = []
+
 
 ## Get all sections, including both those defined in [member custom_sections]
 ## and any auto-generated ones.
@@ -42,6 +51,9 @@ func get_sections() -> Dictionary[String, SVAboutEntries]:
 		var entries_wrapper := SVAboutEntries.new()
 		var info := Engine.get_copyright_info()
 		for component in info:
+			if godot_copyright_info_excludes.has(component.name):
+				continue
+			
 			# TODO: A bespoke entry class for this would be cleaner.
 			var entry := SVAboutEntryCustom.new()
 			entry.title = component.name
