@@ -24,9 +24,7 @@ metadata/_custom_type_script = "uid://n7jauopw8y1o"
 [sub_resource type="Resource" id="Resource_kek77"]
 script = ExtResource("6_272bh")
 title = "About"
-description = "SV About Menu Example Game
-
-Copyright © 2026 SpeedyVelcro
+description = "Copyright © 2026 SpeedyVelcro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -38,9 +36,7 @@ metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 [sub_resource type="Resource" id="Resource_272bh"]
 script = ExtResource("6_272bh")
 title = "Credits"
-description = "SV About Menu Example Game
-
-[b]Lead Developer[/b]
+description = "[b]Lead Developer[/b]
 SpeedyVelcro
 
 [b]Lead Artist[/b]
