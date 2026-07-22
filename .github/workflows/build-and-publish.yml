@@ -65,9 +65,9 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
-      - name: Inject Version Number
-        run: |
-          sed -i 's/\(version="\).*\("\)/\1${{ github.ref_name }}\2/' addons/sv_about-menu/plugin.cfg
+      # - name: Inject Version Number
+      #   run: |
+      #     sed -i 's/\(version="\).*\("\)/\1${{ github.ref_name }}\2/' addons/sv_about-menu/plugin.cfg
       - name: Archive Addon
         run: |
           mkdir zip_root
