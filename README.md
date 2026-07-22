@@ -11,7 +11,7 @@ games.
   third-party components by toggling a single exported variable.
 
 ## Prerequisites
-- Godot 4.6
+- Godot 4.7
 
 ## Usage
 - Copy the `addons/sv_about_menu` folder into the `addons` folder of
