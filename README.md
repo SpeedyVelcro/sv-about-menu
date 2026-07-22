@@ -11,13 +11,18 @@ games.
   third-party components by toggling a single exported variable.
 
 ## Prerequisites
-- Godot 4.7
+- [Godot 4.7](https://godotengine.org/download/4.x)
+
+## Installation
+- Download the archive `sv-about-menu-addon-vX.X.X.zip` from the
+  [latest release page](https://github.com/SpeedyVelcro/sv-about-menu/releases/latest).
+- Extract the archive into the root directory of your project (i.e. the
+  same folder as your `project.godot` file).
+- There is no need to activate any plugin. New nodes will be available to add
+  to any scene tree through the usual interface. They are prefixed with
+  `SVAbout`.
 
 ## Usage
-- Copy the `addons/sv_about_menu` folder into the `addons` folder of
-  your Godot game. There is no need to activate any plugin.
-- New nodes will be available to add to any scene tree through the
-  usual interface. They are prefixed with `SVAbout`.
 - Add the following nodes to any scene:
   - `SVAboutMenuUIController`
   - `SVAboutButtonsSelector`
